@@ -1,6 +1,6 @@
-ERC721_CHECKER is a tool build to detect newly ERC721 created addresses inside a EVM block
+ERC721_CHECKER is a tool designed to detect new addresses created by ERC721 in an EVM block
 
-The ```checker.py``` loop into an array of standards ERC721' function encode in keccack 256 that match with new creating contract in the identified block
+The ```checker.py``` function loops through an array of ERC721 standard functions encoded in keccack 256 which correspond to the new creation contract in the identified block
 
 ```
 # list of standard function for ERC721 token encode in keccak2563
