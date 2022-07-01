@@ -43,7 +43,7 @@ ERC721_KeyWord = [
 ]
 
 # HTTPS provider, this project use INFURA, don't forget to add your key to .env file
-w3 = Web3(Web3.HTTPProvider("https://mainnet.infura.io/v3/{key}"))
+w3 = Web3(Web3.HTTPProvider(f"https://mainnet.infura.io/v3/{key}"))
 
 
 def tx_checker(blockData):
