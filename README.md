@@ -32,6 +32,8 @@ python3 -m pip install -r requirements-dev.txt
 
 # USAGE
 
+add infura token to ```.env``` file
+
 ```
 python3 checker.py --block 13821429
 ```
