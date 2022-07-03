@@ -25,7 +25,6 @@ COPY requirements-dev.txt .
 
 RUN pip install -r requirements.txt
 RUN pip install -r requirements-dev.txt
-RUN pip install eth-brownie
 
 WORKDIR /app
 COPY . /app
