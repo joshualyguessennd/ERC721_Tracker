@@ -24,12 +24,10 @@ ERC721_KeyWord = [
 
 # Installation
 
-ensure that ```eth-brownie``` package is installed
 
 ```
 python3 -m pip install -r requirements.txt
 python3 -m pip install -r requirements-dev.txt
-python3 -m pip install eth-brownie
 ```
 
 # USAGE
