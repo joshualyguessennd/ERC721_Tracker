@@ -61,17 +61,17 @@ def tx_checker(blockData):
         checker_count = 0
         address = str(result)
         try:
-            # contract = Contract(result)
             bytecode = w3.eth.get_code(address)
             string = str(bytecode.hex())
             for item in ERC721_KeyWord:
                 # compare the bytecode with the standards ERC721 functions bytecode
                 if item in string:
                     checker_count += 1
-                    if checker_count == len(ERC721_KeyWord):
-                        array.append(result)
-                        print(f"{result} is a ERC721 token")
-            # print(item1.bytecode)
+                    # print(checker_count)
+                    if checker_count >= len(ERC721_KeyWord) - 1:
+                        if result not in array:
+                            array.append(result)
+                            print(f"{result} is a ERC721 token")
         except ValueError:
             # print("this contract is not verified")
             pass
@@ -84,8 +84,6 @@ def main(argv=None):
     blockNumber = parse.block
     rangeblock = parse.range
     startBlock = w3.eth.get_block_number()
-    # connect to mainnet network
-    network.connect("mainnet")
     blockTo = int(startBlock)
     # list of new created NFTs
     list_address = []
@@ -108,9 +106,6 @@ def main(argv=None):
             if len(list_address) > 0:
                 print(f"list of ERC721 {blockTo} is {list_address}")
             blockTo += 1
-
-    # disconnect the network
-    network.disconnect()
     print(f"list of ERC721 is {list_address}")
     return list_address
 
