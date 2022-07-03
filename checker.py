@@ -26,17 +26,15 @@ parser.add_argument("--range", type=int, nargs=2)
 
 # list of standard function for ERC721 token encode in keccak2563
 ERC721_KeyWord = [
-    "70a08231",  # balanceOf(uint256)
-    "6352211e",  # ownerOf(uint256)
-    "42842e0",  # safeTransferFrom(address,address,uint256)
-    "b88d4fde",  # safeTransferFrom(address,address,uint256,bytes)
-    "23b872dd",  # transferFrom(address,address,uint256)
-    "095ea7b3",  # approve(address,uint256)
-    "081812fc",  # getApprove(uint256)
-    "a22cb465",  # setApprovalForAll(address,bool)
-    "e985e9c5",  # isApprovedForAll(address,address)
-    "ddf252ad",  # Transfer(address,address,uint256)
-    "8c5be1e5",  # Approval(address,address,uint256)
+    "70a08231",  # balanceOf(address) check
+    "6352211e",  # ownerOf(uint256) check
+    "42842e0",  # safeTransferFrom(address,address,uint256) check
+    "b88d4fde",  # safeTransferFrom(address,address,uint256,bytes) check
+    "23b872dd",  # transferFrom(address,address,uint256) check
+    "095ea7b3",  # approve(address,uint256) check
+    "081812fc",  # getApproved(uint256) check
+    "a22cb465",  # setApprovalForAll(address,bool)  check
+    "e985e9c5",  # isApprovedForAll(address,address) check
     "17307eab",  # ApprovalForAll(address,address,bool)
     "c87b56dd",  # tokenURI(uint256)
     "2f745c59",  # tokenOfOwnerByIndex(address,uint256)
@@ -59,6 +57,7 @@ def tx_checker(blockData):
         # check if new addresses are created inside the block
         if receipt_logs != None:
             results.append(receipt_logs)
+            print(f"address {receipt_logs} has been created during block {blockData}")
     for result in results:
         checker_count = 0
         try:
@@ -71,6 +70,7 @@ def tx_checker(blockData):
                     checker_count += 1
                     if checker_count == len(ERC721_KeyWord):
                         array.append(contract.address)
+                        print(f"{contract.address} is a ERC721 token")
             # print(item1.bytecode)
         except ValueError:
             # print("this contract is not verified")
